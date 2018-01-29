@@ -18,7 +18,7 @@
         //On cloture le CLOSE_SUBJECT
         //Retour à la page du sujet avec un message de validation
         closeSubject ($_GET["subject"], 0);
-        $message = urlencode("Le sujet a bien été cloturé");
+        $message = urlencode("Le sujet a été ouvert de nouveau !");
         header ("Location: ?page=subject&subject=".$_GET['subject']."&message=".$message);
         die();
 
