@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 29 Janvier 2018 à 15:02
+-- Généré le :  Lun 29 Janvier 2018 à 15:39
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -154,7 +154,7 @@ INSERT INTO `posts` (`id`, `id_subject`, `id_user`, `post_content`, `date_post`)
 (53, 29, 4, 'mysql select retour chariot', '2018-01-26 16:53:39'),
 (54, 22, 4, 'Va pour demain !', '2018-01-26 16:54:03'),
 (55, 22, 5, 'PrÃ©sent aussi demain ! Je vous dÃ©fonce :-) !', '2018-01-26 16:55:06'),
-(56, 21, 6, 'Vide, quantum, inquam, fallare, Torquate. oratio', '2018-01-29 09:07:21'),
+(56, 21, 6, 'Nunc justo magna, finibus non pharetra ac, accumsan non mauris. Fusce at purus a dui tristique auctor. Suspendisse suscipit quam in dui aliquam, tristique consequat arcu ultrices. Curabitur vulputate, turpis ut accumsan maximus, ante diam suscipit odio, non ultricies mauris enim ut nisl. Nam quis quam eget est posuere pretium at nec eros. Nulla pharetra euismod consequat. Nunc sed convallis velit, sed posuere nisl. Nam vitae mauris est. Etiam sapien diam, sollicitudin eget lorem quis, auctor iaculis lorem. Duis a quam elementum risus viverra pulvinar. Mauris sed semper ex. Praesent suscipit, enim nec vestibulum eleifend, risus lectus egestas lacus, ut ornare eros metus et metus. Vestibulum interdum lectus vitae mattis congue. ', '2018-01-29 09:07:21'),
 (77, 21, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 09:50:40'),
 (98, 38, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 10:19:04'),
 (99, 38, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 10:19:13'),
@@ -162,7 +162,9 @@ INSERT INTO `posts` (`id`, `id_subject`, `id_user`, `post_content`, `date_post`)
 (101, 21, 7, 'toto\r\nest\r\nbeau', '2018-01-29 12:44:21'),
 (102, 39, 5, 'coucou', '2018-01-29 14:31:14'),
 (103, 39, 5, 'ouais youpi le sujet est de nouveau ouvert !!!!!!!', '2018-01-29 14:40:34'),
-(104, 38, 6, 'gls,glkgdkrdkr', '2018-01-29 15:19:00');
+(104, 38, 6, 'gls,glkgdkrdkr', '2018-01-29 15:19:00'),
+(105, 24, 6, 'Parle franÃ§ais bordel !', '2018-01-29 16:29:07'),
+(106, 24, 6, 'Parle franÃ§ais bordel !', '2018-01-29 16:29:08');
 
 -- --------------------------------------------------------
 
@@ -306,7 +308,7 @@ ALTER TABLE `grants`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --

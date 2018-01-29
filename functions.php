@@ -490,7 +490,7 @@
                     //Si l'utilisateur concerné est celui qui a écrit le message, on lui rajoute le lien
                     //pour modifier son post
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"].">Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
                     }
                 }
 
@@ -508,7 +508,7 @@
                     //Si l'utilisateur concerné est celui qui a écrit le message, on lui rajoute le lien
                     //pour modifier son post
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"].">Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
                     }
 
                 }
@@ -519,7 +519,7 @@
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
 
                         $line .= "<a href=?service=remove_post&id=".$_SESSION["id_post"].">Supprimer</a>";
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"].">Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
                     }
 
                 }
