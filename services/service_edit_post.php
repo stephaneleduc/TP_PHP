@@ -1,6 +1,6 @@
 <?php
 
-    //Ce fichier est utilisé lorsqu'un utilisateur souhaite modifier l'un de ses posts
+    //Ce fichier est utilisé lorsqu'un utilisateur souhaite modifier l'un de ses posts (lien "modifier" près du post)
 
     //Utilisé pour empecher l'appel de page php via l'url
     if(!defined("DEFINITION")) {
@@ -10,6 +10,17 @@
 ?>
 
 <?php
+
+    if (isset($_GET["index_page"])) {
+
+        $index_page = $_GET["index_page"];
+    }
+
+    else {
+
+        $index_page = 0;
+
+    }
 
     //Si l'id du post concerné par la modification est passé dans l'URL
     if (isset($_GET["id"]) ) {

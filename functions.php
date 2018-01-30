@@ -458,10 +458,9 @@
         $date = strtotime($message["date"]);
         $newdate = strftime('%A %d %B %Y à %H:%M:%S',$date);
 
-        //Le contenu du message encodé via "htmlspecialchars" est travaillé pour être lisible
-        $content_post=$message["content"];
+        //Affichage du message
+        $content_post = $message["content"];
         $content = str_replace("\r", "<br>", $content_post);
-
 
         //On commence à créer l'affichage du post.
         $line = "<div class = post >";
@@ -544,7 +543,7 @@
     function addPost($id_subject, $id_user, $content ) {
 
         //Encodage du texte pour eviter toutes injections de code
-        $text = htmlspecialchars($content, ENT_QUOTES);
+        $text = htmlentities($content);
         $connection = getConnection();
         $sql = "INSERT INTO posts (id_subject, id_user, post_content) VALUES (?,?,?)";
         $statement = mysqli_prepare ($connection, $sql);
@@ -876,11 +875,10 @@
 
 
 
-    //réer un nouveau sujet et l"insère en base de données, avec le premier post et la catégorie (obligatoire)
+    //Créer un nouveau sujet et l"insère en base de données, avec le premier post et la catégorie (obligatoire)
     function createNewSubject($id_user, $title, $content_post, $cat) {
 
-        $content = str_replace("\r", "<br>", $content_post);
-        $text = htmlspecialchars($content);
+        $text = htmlentities($content);
         $connection = getConnection();
         $sql = "INSERT INTO subject (id_user, title, id_cat) VALUES (? , ?, ?)";
         $statement = mysqli_prepare ($connection, $sql);
@@ -996,12 +994,11 @@
 
     //fonction qui permet de mettre à jour un post
     function updatePostContent( $id_post, $content ) {
-        $content_post = str_replace("\r", "<br>", $content);
-        $text = htmlspecialchars($content_post);
+        $text = htmlentities($content);
         $connection = getConnection();
         $sql = "UPDATE posts set post_content = ? WHERE id = ?";
         $statement = mysqli_prepare ($connection, $sql);
-        mysqli_stmt_bind_param( $statement, "si", $content, $id_post);
+        mysqli_stmt_bind_param( $statement, "si", $text, $id_post);
         mysqli_stmt_execute($statement);
         mysqli_stmt_fetch($statement);
         mysqli_stmt_close ($statement);
