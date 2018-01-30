@@ -18,8 +18,10 @@
   <form method="post" action="?page=accueil"> Rechercher les sujets d'un auteur ou un mot clé dans le titre du sujet : <br>
       <input type="text" name="search-value">
       <select name="research" size="1">
-       <option>Auteur</option>
-       <option>Titre</option>
+       <option>Sélectionner une valeur</option>
+       <option>Auteurs</option>
+       <option>Titres</option>
+       <option>Messages</option>
       </select>
       <input type="submit" value="Valider">
   </form>
@@ -95,13 +97,13 @@
   $cat = null;
   $auteur = null;
   $title = null;
-
+  $msg = null;
 
 //Si l'utilisateur a recherché quelque chose
-  if ( !empty($_POST["search-value"]) &&  !empty($_POST["research"]) ) {
+  if ( !empty($_POST["search-value"]) &&  !empty($_POST["research"])  && $_POST["research"] != "Sélectionner une valeur" ) {
 
     //Si il a recherché dans les auteurs
-    if ( $_POST["research"] == "Auteur") {
+    if ( $_POST["research"] == "Auteurs") {
 
       $string = $_POST["search-value"];
 
@@ -112,13 +114,24 @@
     }
 
     //S'il a recherché dans le titre des sujets
-    else if ( $_POST["research"] == "Titre") {
+    else if ( $_POST["research"] == "Titres") {
 
       $string = $_POST["search-value"];
 
       $title = preg_replace('/[^A-Za-z0-9\- ]/', '', $string);
 
       showMenu($index_page, $subjects_by_page, $cat, $auteur, $title);
+
+    }
+
+    else if ( $_POST["research"] == "Messages") {
+
+      $string = $_POST["search-value"];
+
+      $msg = preg_replace('/[^A-Za-z0-9\- ]/', '', $string);
+
+
+      showMenu($index_page, $subjects_by_page, $cat, $auteur, $title, $msg);
 
     }
 

@@ -456,7 +456,7 @@
 
         //On travaille sur la date pour la formater dans un format plus lisible
         $date = strtotime($message["date"]);
-        $newdate = strftime('%A %d %B %Y, %H:%M:%S',$date);
+        $newdate = strftime('%A %d %B %Y à %H:%M:%S',$date);
 
         //Le contenu du message encodé via "htmlspecialchars" est travaillé pour être lisible
         $content_post=$message["content"];
@@ -620,15 +620,45 @@
     //Les paramètres optionnels permettent la pigination et un affichage en fonction du nombre de sujets par page (liste déroulante)
     //Le paramètre "catégorie" permet de filtrer l'affichage des sujets.
     //Le paramètre "auteurs" permet d'afficher les sujets de l'auteur renseigné dans la barre de recherche
-    //Le paramètre "title" permet d'afficher les sujets contenant les mots clés saisis par l'utilisateur
-    function showMenu ($page_index = 0, $nb_subject = NB_SUBJECTS_BY_PAGE, $categorie = null, $auteur = null, $title = null) {
+    //Le paramètre "title" permet d'afficher les sujets dont le titre contient les mots clés saisis par l'utilisateur
+    //Le paramètre "msg" permet d'afficher les sujets dont les messages contiennent les  mots clés saisis par l'utilisateur
+    function showMenu ($page_index = 0, $nb_subject = NB_SUBJECTS_BY_PAGE, $categorie = null, $auteur = null, $title = null, $msg = null) {
 
         $start_index = $page_index * $nb_subject;
         $end_index = $nb_subject;
         $connection = getConnection();
         
+        //Si la recherche d"un mot clé dans les messages est activée
+        if ($msg != null ) {
+
+            $string = preg_replace('/\s.*/', '', $msg);
+            $new_msg = "%$string%";
+
+            $sql= "SELECT subject.id, title, users.username, P1.date_post, cat_name
+            FROM SUBJECT
+            JOIN POSTS as P1
+            ON P1.id_subject = subject.id
+            JOIN USERS
+            ON users.id = subject.id_user
+            JOIN CATEGORIES
+            ON categories.id = SUBJECT.id_cat
+            WHERE P1.post_content like ?
+            AND P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
+            GROUP BY subject.id
+            LIMIT ?, ?";
+
+            $statement = mysqli_prepare($connection, $sql);
+            mysqli_stmt_bind_param($statement, "sii", $new_msg, $start_index, $end_index);
+            mysqli_stmt_execute ($statement );
+            mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
+            $subjects = [];
+
+        }
+
+
+
         //Si la recherche d"un mot clé dans le titre du sujet est activée
-        if ($title != null ) {
+        else if ($title != null ) {
 
             $string = preg_replace('/\s.*/', '', $title);
             $newtitle = "%$string%";
