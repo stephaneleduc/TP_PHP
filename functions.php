@@ -602,14 +602,15 @@
 
     //Fonction qui compte et retourne le nombre de sujets disponibles.
     //Permet la pagination
-    function countNbSubject () {
-
-        $connection = getConnection();
-        $sql = "SELECT count(id) as subjects FROM subject";
-        $results = mysqli_query($connection, $sql);
-        $result = mysqli_fetch_assoc($results);
-        mysqli_close($connection);
-        return $result["subjects"];
+    function countNbSubject ( $val = 0, $content = 0 ) {
+        
+            $connection = getConnection();
+            $sql = "SELECT count(id) as subjects FROM subject";
+            $results = mysqli_query($connection, $sql);
+            $result = mysqli_fetch_assoc($results);
+            mysqli_close($connection);
+            return $result["subjects"];
+            
 
     }
     
