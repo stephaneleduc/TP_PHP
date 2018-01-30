@@ -103,7 +103,9 @@
     //Si il a recherché dans les auteurs
     if ( $_POST["research"] == "Auteur") {
 
-      $auteur = $_POST["search-value"];
+      $string = $_POST["search-value"];
+
+      $auteur = preg_replace('/[^A-Za-z0-9\- ]/', '', $string);
 
       showMenu($index_page, $subjects_by_page, $cat, $auteur);
   
@@ -112,7 +114,9 @@
     //S'il a recherché dans le titre des sujets
     else if ( $_POST["research"] == "Titre") {
 
-      $title = $_POST["search-value"];
+      $string = $_POST["search-value"];
+
+      $title = preg_replace('/[^A-Za-z0-9\- ]/', '', $string);
 
       showMenu($index_page, $subjects_by_page, $cat, $auteur, $title);
 

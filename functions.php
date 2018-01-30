@@ -658,6 +658,8 @@
         //Si la recherche d'un auteur est activée, on recherche et on affiche tous les sujets de cet auteur
         else if ($auteur != null ) {
 
+            $new_auteur = "%$auteur%";
+
             $sql= "SELECT subject.id, title, users.username, P1.date_post, cat_name
             FROM SUBJECT
             JOIN POSTS as P1
@@ -666,13 +668,13 @@
             ON users.id = subject.id_user
             JOIN CATEGORIES
             ON categories.id = SUBJECT.id_cat
-            WHERE users.username = ?
+            WHERE users.username like ?
             AND P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
             GROUP BY subject.id
             LIMIT ?, ?";
 
             $statement = mysqli_prepare($connection, $sql);
-            mysqli_stmt_bind_param($statement, "sii", $auteur, $start_index, $end_index);
+            mysqli_stmt_bind_param($statement, "sii", $new_auteur, $start_index, $end_index);
             mysqli_stmt_execute ($statement );
             mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
             $subjects = [];
