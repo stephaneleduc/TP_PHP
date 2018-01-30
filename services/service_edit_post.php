@@ -11,16 +11,27 @@
 
 <?php
 
-    if (isset($_GET["index_page"])) {
+        if (isset($_GET["index_page"])) {
 
-        $index_page = $_GET["index_page"];
-    }
+            $index_page = $_GET["index_page"];
+        }
 
-    else {
+        else {
 
-        $index_page = 0;
+            $index_page = 0;
 
-    }
+        }
+
+        if (isset($_GET["post_by_page"])) {
+
+            $nb_posts = $_GET["post_by_page"];
+        }
+
+        else {
+
+            $nb_posts = NB_POSTS_BY_PAGE ;
+
+        }
 
     //Si l'id du post concerné par la modification est passé dans l'URL
     if (isset($_GET["id"]) ) {
@@ -50,7 +61,7 @@
 
             //On redirige vers la page du sujet. Les deux variables de sessions créés au dessus vont permettre l'affichage
             // du formulaire de modification
-            header ("Location: ?page=subject&subject=".$_SESSION["user"]["id_subject"]);
+            header ("Location: ?page=subject&subject=".$_SESSION["user"]["id_subject"]."&post_by_page=".$nb_posts."&index_page=".$index_page);
             die();
         }
 

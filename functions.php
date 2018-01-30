@@ -448,6 +448,28 @@
     //Affichage du post, dont le contenu et l'id du sujet sont passés en paramètre
     function showPost( $message, $id_subject) {
 
+        if (isset($_GET["index_page"])) {
+
+            $index_page = $_GET["index_page"];
+        }
+    
+        else {
+    
+            $index_page = 0;
+    
+        }
+
+        if (isset($_GET["post_by_page"])) {
+
+            $nb_posts = $_GET["post_by_page"];
+        }
+    
+        else {
+    
+            $nb_posts = NB_POSTS_BY_PAGE ;
+    
+        }
+
         //On récupere la valeur du booléen qui clore le sujet
         $close = getCloseSubject($id_subject);
 
@@ -489,7 +511,7 @@
                     //Si l'utilisateur concerné est celui qui a écrit le message, on lui rajoute le lien
                     //pour modifier son post
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."&post_by_page=".$nb_posts."&index_page=".$index_page."#edit_post>Modifier</a>";
                     }
                 }
 
@@ -507,7 +529,7 @@
                     //Si l'utilisateur concerné est celui qui a écrit le message, on lui rajoute le lien
                     //pour modifier son post
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."&post_by_page=".$nb_posts."&index_page=".$index_page."#edit_post>Modifier</a>";
                     }
 
                 }
@@ -518,7 +540,7 @@
                     if ($message["username"] == $_SESSION["user"]["username"] ) {
 
                         $line .= "<a href=?service=remove_post&id=".$_SESSION["id_post"].">Supprimer</a>";
-                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."#edit_post>Modifier</a>";
+                        $line .= "<a href=?service=edit_post&id=".$_SESSION["id_post"]."&post_by_page=".$nb_posts."&index_page=".$index_page."#edit_post>Modifier</a>";
                     }
 
                 }
