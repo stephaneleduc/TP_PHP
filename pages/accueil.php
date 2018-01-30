@@ -29,7 +29,7 @@
 
 <!-- formulaire pour filtrer les sujets par catégorie -->
 <div id="filter_cat">
-  <form method="get" action="?page=accueil"> Filter les sujets par catégories :
+  <form method="post" action="?page=accueil"> Filter les sujets par catégories :
       <select name="catname" size="1">
       <?php
         foreach ($categories as $categorie) {
@@ -142,10 +142,10 @@
 
 
     //Si le filtre catégorie est activé
-    if ( isset($_GET["catname"])) {
+    if ( isset($_POST["catname"])) {
 
       //On récupere l'id de la catégorie sélectionné
-      $cat = getCategorieId($_GET["catname"]);
+      $cat = getCategorieId($_POST["catname"]);
 
       // Si l'id n'existe pas (donc que la valeur dans l'URL est incorrecte), on remet la variable à 0
       // pour afficher tous les sujets
