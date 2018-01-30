@@ -220,6 +220,10 @@
             }
 
 
+            #search {
+                text-align:center;
+            }
+
 
         </style>
     </head>

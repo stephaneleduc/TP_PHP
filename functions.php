@@ -618,37 +618,70 @@
     //Cette fonction affiche sur la page d'accueil tous les sujets avec (le titre, l'auteur, le nombre de posts,
     //la date du dernier post et la catégorie).
     //Les paramètres optionnels permettent la pigination et un affichage en fonction du nombre de sujets par page (liste déroulante)
-    //Le paramètre catégorie permet de filtrer l'affichage des sujets.
-    function showMenu ($page_index = 0, $nb_subject = NB_SUBJECTS_BY_PAGE, $categorie = 0) {
+    //Le paramètre "catégorie" permet de filtrer l'affichage des sujets.
+    //Le paramètre "auteurs" permet d'afficher les sujets de l'auteur renseigné dans la barre de recherche
+    //Le paramètre "title" permet d'afficher les sujets contenant les mots clés saisis par l'utilisateur
+    function showMenu ($page_index = 0, $nb_subject = NB_SUBJECTS_BY_PAGE, $categorie = null, $auteur = null, $title = null) {
 
         $start_index = $page_index * $nb_subject;
         $end_index = $nb_subject;
         $connection = getConnection();
+        
+        //Si la recherche d"un mot clé dans le titre du sujet est activée
+        if ($title != null ) {
 
-        //Si on ne filtre pas la catégorie, on récupere tous les sujets
-        if ($categorie == 0) {
-            $sql = "SELECT subject.id, title, users.username, P1.date_post, cat_name
-                    FROM SUBJECT
-                    JOIN POSTS as P1
-                    ON P1.id_subject = subject.id
-                    JOIN USERS
-                    ON users.id = subject.id_user
-                    JOIN CATEGORIES
-                    ON categories.id = SUBJECT.id_cat
-                    WHERE P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
-                    GROUP BY subject.id
-                    LIMIT ?, ?";
+            $string = preg_replace('/\s.*/', '', $title);
+            $newtitle = "%$string%";
+
+            $sql= "SELECT subject.id, title, users.username, P1.date_post, cat_name
+            FROM SUBJECT
+            JOIN POSTS as P1
+            ON P1.id_subject = subject.id
+            JOIN USERS
+            ON users.id = subject.id_user
+            JOIN CATEGORIES
+            ON categories.id = SUBJECT.id_cat
+            WHERE title like ?
+            AND P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
+            GROUP BY subject.id
+            LIMIT ?, ?";
 
             $statement = mysqli_prepare($connection, $sql);
-            mysqli_stmt_bind_param($statement, "ii", $start_index, $end_index);
+            mysqli_stmt_bind_param($statement, "sii", $newtitle, $start_index, $end_index);
             mysqli_stmt_execute ($statement );
             mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
             $subjects = [];
+
+        }
+
+
+        //Si la recherche d'un auteur est activée, on recherche et on affiche tous les sujets de cet auteur
+        else if ($auteur != null ) {
+
+            $sql= "SELECT subject.id, title, users.username, P1.date_post, cat_name
+            FROM SUBJECT
+            JOIN POSTS as P1
+            ON P1.id_subject = subject.id
+            JOIN USERS
+            ON users.id = subject.id_user
+            JOIN CATEGORIES
+            ON categories.id = SUBJECT.id_cat
+            WHERE users.username = ?
+            AND P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
+            GROUP BY subject.id
+            LIMIT ?, ?";
+
+            $statement = mysqli_prepare($connection, $sql);
+            mysqli_stmt_bind_param($statement, "sii", $auteur, $start_index, $end_index);
+            mysqli_stmt_execute ($statement );
+            mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
+            $subjects = [];
+
         }
 
         //Si l'utilisateur applique un filtre sur la catégorie, la page d'accueil se recharge avec les sujets
         // contenus dans cette catégorie
-        else {
+        else if ($categorie != null) {
 
             $sql = "SELECT subject.id, title, users.username, P1.date_post, cat_name
                     FROM SUBJECT
@@ -669,6 +702,27 @@
             mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
             $subjects = [];
 
+        }
+
+        //Si on ne filtre pas la catégorie, on récupere tous les sujets
+        else {
+            $sql = "SELECT subject.id, title, users.username, P1.date_post, cat_name
+                    FROM SUBJECT
+                    JOIN POSTS as P1
+                    ON P1.id_subject = subject.id
+                    JOIN USERS
+                    ON users.id = subject.id_user
+                    JOIN CATEGORIES
+                    ON categories.id = SUBJECT.id_cat
+                    WHERE P1.date_post IN (SELECT max(date_post) FROM POSTS as P2 WHERE P1.id_subject = P2.id_subject)
+                    GROUP BY subject.id
+                    LIMIT ?, ?";
+
+            $statement = mysqli_prepare($connection, $sql);
+            mysqli_stmt_bind_param($statement, "ii", $start_index, $end_index);
+            mysqli_stmt_execute ($statement );
+            mysqli_stmt_bind_result( $statement, $b_id, $b_title, $_username, $b_date_post, $b_cat_name);
+            $subjects = [];
         }
         
         //On récupère les infos concernées et on les stocke dans un tableau
