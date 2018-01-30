@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 29 Janvier 2018 à 15:39
+-- Généré le :  Mar 30 Janvier 2018 à 14:01
 -- Version du serveur :  5.7.11
 -- Version de PHP :  7.0.3
 
@@ -51,7 +51,9 @@ INSERT INTO `categories` (`id`, `cat_name`) VALUES
 (13, 'CINEMA'),
 (14, 'MUSIQUE'),
 (15, 'PHOTO'),
-(17, 'VTT');
+(17, 'VTT'),
+(18, 'JAVASCRIPT'),
+(19, 'AUTRE');
 
 -- --------------------------------------------------------
 
@@ -135,36 +137,45 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `id_subject`, `id_user`, `post_content`, `date_post`) VALUES
-(37, 21, 4, 'Nulla imperdiet, tellus quis pretium consequat, odio augue rutrum massa, et ullamcorper lorem enim pretium magna. Pellentesque euismod nisi ut magna eleifend rhoncus. Aenean condimentum pretium turpis vel pulvinar. Vestibulum augue nibh, gravida non pretium sit amet, semper sed tellus.&lt;br&gt;\n&lt;br&gt;\nMauris orci massa, gravida ut auctor efficitur, cursus at felis. Cras tellus nisi, ultrices eu eleifend quis, porttitor sed mi. Maecenas feugiat interdum sem. Vestibulum in pretium ipsum, nec vehicula turpis. Praesent dapibus, ipsum vitae condimentum tristique, ipsum sapien pretium metus, et mattis velit velit in enim. Mauris vel urna lobortis, porttitor nibh a, gravida nisl. Phasellus vel mollis arcu, ut pretium diam. Maecenas accumsan auctor libero, vitae egestas nibh dictum in. Nunc eget gravida ex. ', '2018-01-26 16:34:25'),
-(38, 22, 4, 'Donec aliquet ante ut dui laoreet, non condimentum nulla elementum. Nullam et blandit metus. Donec sit amet felis convallis, consectetur erat ut, sagittis risus. Nulla in lectus tempor, semper lectus sed, gravida nisi. Mauris iaculis tincidunt leo, sit amet volutpat sem accumsan in. Proin dapibus metus id libero imperdiet sollicitudin. Aliquam nibh sapien, posuere sed euismod quis, porttitor vulputate lorem.&lt;br&gt;\nUt semper augue sed mi tristique, vel pharetra nunc interdum.&lt;br&gt;\nMaecenas dictum risus tellus, eu tincidunt nisl lacinia ac. Sed hendrerit et arcu vel tempus. Fusce viverra nec eros vitae feugiat. Sed dapibus turpis at sem gravida, nec porta magna volutpat. ', '2018-01-26 16:35:12'),
-(39, 23, 4, 'Bonjour,&lt;br&gt;\n&lt;br&gt;\nQui veut de mon super dÃ©tecteur de fumÃ©e ? &lt;br&gt;\n&lt;br&gt;\nIl est cool !', '2018-01-26 16:39:33'),
-(40, 24, 4, 'Cras viverra, massa id bibendum commodo, ante ligula hendrerit nunc, eu laoreet mi orci in ante. Aenean eget suscipit enim. Proin et sapien est. Pellentesque sit amet pretium eros. Sed lobortis tempor magna eu placerat. Proin viverra arcu blandit ligula dictum, ut tristique eros tristique. Vivamus dignissim vitae odio eget dictum. Pellentesque et vestibulum sem. Sed ac massa vel diam ultrices molestie. Fusce eget augue lobortis, efficitur urna sit amet, faucibus lectus. Donec mattis libero nec nibh feugiat sollicitudin. Vivamus ante metus, aliquam varius nisi at, ultricies feugiat dolor. ', '2018-01-26 16:40:14'),
-(41, 25, 7, 'On se rÃ©galer !', '2018-01-26 16:41:50'),
-(42, 21, 7, 'Sed quis vestibulum lorem, ut mollis tortor. Quisque molestie turpis in risus dignissim vehicula. Sed consectetur, massa quis lobortis hendrerit, nibh quam volutpat nibh, ut ultricies sapien ipsum ultrices ipsum. Phasellus lobortis ex non euismod pharetra. Suspendisse dignissim nisl risus, sit amet porta massa euismod sit amet. Nulla sed feugiat justo. Cras cursus cursus ornare. Vestibulum posuere tristique nisi, quis venenatis mauris. Phasellus purus metus, pulvinar consectetur congue nec, porttitor non mauris. Mauris euismod egestas justo ac laoreet. Nullam at malesuada risus. Nunc libero mauris, rutrum sed pulvinar quis, rhoncus vel felis. Donec vel odio vehicula, mollis turpis ut, ultricies risus. Vestibulum dictum aliquet sem vel tincidunt. ', '2018-01-26 16:42:04'),
-(43, 21, 7, 'C\'est tout bon bon !', '2018-01-26 16:42:13'),
-(44, 21, 7, 'tu comfirmes ?', '2018-01-26 16:42:20'),
-(45, 22, 7, 'Demain si tu veux, je ne peux pas ce soir... J\'ai poney aquatique...', '2018-01-26 16:42:42'),
-(46, 26, 7, 'Pellentesque placerat sem ac condimentum luctus. Duis tempor fringilla blandit. Nam dapibus mi id elit elementum tempor. Pellentesque ut ante ante. Proin suscipit lobortis nibh id ultricies. Phasellus bibendum accumsan dictum. Ut vel convallis lacus, non dapibus lorem. Nulla pellentesque, augue vitae rhoncus laoreet, quam lorem hendrerit purus, nec posuere libero est at risus. Suspendisse tellus nulla, auctor et eros vel, molestie malesuada arcu. Cras mattis aliquet erat in laoreet. Donec erat felis, ultricies ut sagittis sed, placerat eget dolor. Vivamus aliquet blandit dui, nec vehicula arcu. Donec efficitur dictum tortor quis rhoncus. Curabitur iaculis tortor diam, sit amet rutrum libero bibendum sit amet. Etiam feugiat, augue sed fermentum ultricies, eros metus ornare quam, sed semper augue orci et odio. ', '2018-01-26 16:43:14'),
-(47, 27, 7, 'Help plz !', '2018-01-26 16:43:52'),
-(48, 27, 6, 'Bonjour, \r\n\r\nVoici le lien vers la documentation officielle de PHP :\r\nhttp://php.net/\r\n\r\nCordialement,\r\nL\'Ã©quipe Admin', '2018-01-26 16:45:13'),
-(49, 26, 6, 'Tant qu\'il trouve des cons pour payer...\r\n\r\nCordialement,\r\nL\'Ã©quipe ADMIN', '2018-01-26 16:46:12'),
-(50, 23, 6, 'On s\'en fout !', '2018-01-26 16:46:22'),
-(51, 29, 6, ' Sed in volutpat turpis. Quisque magna enim, gravida nec diam ac, interdum rutrum mauris. Sed magna odio, consectetur et auctor quis, semper non quam. Cras pulvinar nisl ac purus molestie porta. Cras auctor lectus vitae rhoncus laoreet. Nunc imperdiet, enim egestas consectetur mollis, sapien justo placerat ipsum, ut commodo turpis diam vitae sem. Phasellus varius urna non est accumsan placerat ut nec mauris. Maecenas pellentesque mi eget justo efficitur, et bibendum quam placerat. Morbi lorem arcu, rhoncus dapibus nulla ut, scelerisque laoreet tellus. Donec sagittis tincidunt leo eget fermentum. Ut quis congue felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;br&gt;\n&lt;br&gt;\nIn hac habitasse platea dictumst. &lt;br&gt;\n&lt;br&gt;\nNam ornare lectus et dui imperdiet tristique. Suspendisse sit amet erat molestie erat finibus ultricies. &lt;br&gt;\nPhasellus quis sapien a diam gravida pharetra.', '2018-01-26 16:52:42'),
-(52, 29, 4, 'Cras viverra, massa id bibendum commodo, ante ligula hendrerit nunc, eu laoreet mi orci in ante. Aenean eget suscipit enim. Proin et sapien est.', '2018-01-26 16:53:31'),
-(53, 29, 4, 'mysql select retour chariot', '2018-01-26 16:53:39'),
-(54, 22, 4, 'Va pour demain !', '2018-01-26 16:54:03'),
-(55, 22, 5, 'PrÃ©sent aussi demain ! Je vous dÃ©fonce :-) !', '2018-01-26 16:55:06'),
-(56, 21, 6, 'Nunc justo magna, finibus non pharetra ac, accumsan non mauris. Fusce at purus a dui tristique auctor. Suspendisse suscipit quam in dui aliquam, tristique consequat arcu ultrices. Curabitur vulputate, turpis ut accumsan maximus, ante diam suscipit odio, non ultricies mauris enim ut nisl. Nam quis quam eget est posuere pretium at nec eros. Nulla pharetra euismod consequat. Nunc sed convallis velit, sed posuere nisl. Nam vitae mauris est. Etiam sapien diam, sollicitudin eget lorem quis, auctor iaculis lorem. Duis a quam elementum risus viverra pulvinar. Mauris sed semper ex. Praesent suscipit, enim nec vestibulum eleifend, risus lectus egestas lacus, ut ornare eros metus et metus. Vestibulum interdum lectus vitae mattis congue. ', '2018-01-29 09:07:21'),
-(77, 21, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 09:50:40'),
-(98, 38, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 10:19:04'),
-(99, 38, 6, '&lt;div class=&quot;tablecontent&quot;&gt;\r\n                &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;\r\n                    &lt;tbody class=&quot;tablecontent&quot;&gt;\r\n                        &lt;?php echo $stafftable?&gt;\r\n                    &lt;/tbody&gt;        \r\n                &lt;/table&gt;\r\n            &lt;/div&gt;', '2018-01-29 10:19:13'),
-(100, 39, 5, 'klkl', '2018-01-29 11:35:18'),
-(101, 21, 7, 'toto\r\nest\r\nbeau', '2018-01-29 12:44:21'),
-(102, 39, 5, 'coucou', '2018-01-29 14:31:14'),
-(103, 39, 5, 'ouais youpi le sujet est de nouveau ouvert !!!!!!!', '2018-01-29 14:40:34'),
-(104, 38, 6, 'gls,glkgdkrdkr', '2018-01-29 15:19:00'),
-(105, 24, 6, 'Parle franÃ§ais bordel !', '2018-01-29 16:29:07'),
-(106, 24, 6, 'Parle franÃ§ais bordel !', '2018-01-29 16:29:08');
+(116, 42, 6, 'Nunc vitae purus imperdiet, pharetra orci ac, laoreet purus. Suspendisse euismod posuere nulla, sed blandit ipsum luctus et. Morbi lorem mi, consequat eu eleifend eget, porta a nibh. Aenean ante eros, congue quis ultricies in, consequat non lorem. Aliquam ut porttitor nisi. Nunc malesuada diam odio, non cursus mauris volutpat sit amet. Maecenas iaculis velit elit, in cursus neque venenatis eu. Morbi non erat nec dolor tincidunt lacinia quis eget justo. Sed tempus, dolor nec lobortis porttitor, ipsum enim condimentum felis, eu commodo ipsum ligula eu neque. Vivamus rutrum sem neque. Praesent at blandit velit, nec viverra purus. Vivamus sit amet ipsum imperdiet, fringilla massa sed, lacinia libero. Nunc venenatis ac purus vel porttitor. Praesent aliquam velit urna, et dictum elit lacinia in. Fusce vitae accumsan lectus, auctor placerat metus.', '2018-01-30 11:44:03'),
+(117, 43, 6, 'PHP', '2018-01-30 11:45:06'),
+(118, 44, 6, 'coucou', '2018-01-30 11:45:26'),
+(120, 46, 6, 'Coucou,\r\n\r\nC&#039;est la loose !', '2018-01-30 11:46:26'),
+(121, 43, 4, 'coucou PHP', '2018-01-30 11:48:12'),
+(122, 42, 4, 'Nunc pellentesque dignissim odio, at placerat tortor varius vitae. Maecenas fermentum arcu quis justo volutpat, vitae efficitur dui vestibulum. Etiam et ipsum turpis. Nulla aliquet velit nec tortor tincidunt, non dignissim dui volutpat. Nullam placerat enim quis mattis condimentum. Praesent commodo et ipsum vel tincidunt. Phasellus elementum, mauris quis efficitur eleifend, lectus tortor tincidunt ligula, in fringilla dui elit facilisis ante. Nullam vitae mattis ipsum. Curabitur ac urna tempor, ullamcorper turpis id, euismod enim. Donec accumsan rutrum elementum. In dictum lorem ligula, eget ultricies justo mattis in. FusceMERDEcongue non mauris ut semper. Nulla facilisi. Nam blandit ipsum dui, nec feugiat quam suscipit quis. Nullam a mauris id risus ultricies cursus. Proin pharetra accumsan malesuada. ', '2018-01-30 11:48:50'),
+(123, 47, 4, 'Bonjour,\r\n\r\nOn m&#039;a volÃ© mon VTT place Cassagne il y 2 jours. Quelqu&#039;un a t-il vu mon Lapierre Titane trainÃ© dans les parages ?', '2018-01-30 11:50:32'),
+(124, 47, 5, 'Bonjour,\r\n\r\nNon pas vu...\r\nA mon avis il est dÃ©jÃ  trop tard.\r\nDÃ©solÃ© et bon courage Ã  toi !', '2018-01-30 11:51:12'),
+(125, 48, 5, '&lt;script&gt;\r\nalert (&quot;ERREUR SYSTEM PLZ FORMAT YOuR HARd DRIVE DISK&quot;)\r\n&lt;/script&gt;', '2018-01-30 11:52:43'),
+(126, 48, 5, 'Encore un qui tente de l&#039;injection...\r\n\r\nVa falloir travailler sur un moyen de vous bloquer pour de bon...', '2018-01-30 11:53:19'),
+(127, 49, 5, 'Alors on danse !!!!!', '2018-01-30 11:55:23'),
+(128, 49, 6, 'la la la la la la la la la la\r\npapa ou t&#039;es ? ', '2018-01-30 11:55:55'),
+(129, 50, 7, 'A chier !', '2018-01-30 11:57:20'),
+(130, 50, 7, 'De la merde en boite !\r\n\r\nPire que les autres !', '2018-01-30 11:57:39'),
+(131, 50, 7, 'A mort Disney !', '2018-01-30 11:57:48'),
+(132, 50, 7, 'Aller tous mourir avec vos films de merde !!', '2018-01-30 11:58:03'),
+(133, 50, 6, 'Il va se calmer le rageux ?', '2018-01-30 11:58:25'),
+(134, 50, 6, 'Ou il veut mon poing dans la gueule ? ', '2018-01-30 11:58:47'),
+(135, 51, 6, 'Bienvenue sur le forum de Windaube !', '2018-01-30 11:59:31'),
+(136, 51, 6, 'Ici on dit du mal de Windows ! Alors on y va balancez vos critiques nÃ©gatives !!! ', '2018-01-30 12:00:11'),
+(137, 52, 7, 'coucou les gars !', '2018-01-30 13:35:58'),
+(138, 53, 7, 'On mange quoi ?', '2018-01-30 13:36:24'),
+(139, 53, 4, 'Du pain et de l&#039;eau, j&#039;ai plus de tune...', '2018-01-30 13:37:08'),
+(140, 53, 5, 'Je clos ce sujet qui sert Ã  rien !', '2018-01-30 13:37:38'),
+(141, 54, 5, 'Y&#039;a quelqu&#039;un ?', '2018-01-30 13:42:20'),
+(142, 50, 5, 'En plein dans sa mouille le con !', '2018-01-30 14:14:05'),
+(143, 54, 7, 'oui je suis lÃ ', '2018-01-30 14:14:54'),
+(144, 54, 7, 'Je m&#039;appelle PERCEVAL. Mais on m&#039;appelle gros faisan au sud. Et au Nord c&#039;est juste ducon...\r\n', '2018-01-30 14:15:30'),
+(145, 54, 4, 'Salut ducon :-D', '2018-01-30 14:15:55'),
+(146, 54, 6, 'Salut le gros faisan !\r\nL&#039;Ã©quipe ADMIN te souhaite la bienvenue', '2018-01-30 14:16:35'),
+(147, 50, 6, 'test test', '2018-01-30 14:17:07'),
+(148, 50, 6, 'Phasellus sollicitudin felis faucibus ex dapibus laoreet. In nec gravida urna. Nunc commodo, urna quis aliquam tempor, urna eros laoreet dolor, eget pulvinar dui arcu a diam. Sed a consectetur sem, nec cursus ex. Morbi quis tincidunt enim, vitae eleifend nisl. Suspendisse potenti. Cras pellentesque at risus pretium consequat. Ut dolor massa, fringilla in erat eu, sodales malesuada lectus. Vestibulum egestas maximus ornare. Fusce non tincidunt neque, in sagittis elit. Curabitur id enim vestibulum, rutrum sem ac, iaculis magna. Praesent pharetra elementum ligula in porta. Sed tempor, augue vitae bibendum gravida, ante erat dictum ante, a laoreet nibh elit vehicula tortor. Nam luctus sit amet ligula ut lobortis. Quisque vehicula sollicitudin imperdiet. ', '2018-01-30 14:17:18'),
+(149, 50, 6, '&lt;!DOCTYPE html&gt;\r\n&lt;html&gt;\r\n&lt;body&gt;\r\n\r\n&lt;p&gt;This is a paragraph.&lt;/p&gt;\r\n&lt;p&gt;This is another paragraph.&lt;/p&gt;\r\n\r\n&lt;/body&gt;\r\n&lt;/html&gt;\r\n', '2018-01-30 14:17:46'),
+(150, 43, 6, 'Je vais mettre des exemples', '2018-01-30 14:18:10'),
+(152, 43, 6, 'html, body {\r\n margin: 0;\r\n padding: 0;\r\n }\r\nbody {\r\n background-color: white; \r\n font-family: Verdana, sans-serif; \r\n font-size: 100%;\r\n }\r\nh1 {\r\n font-size: 200%; \r\n color: navy; \r\n text-align: center;\r\n }\r\nh2 {\r\n font-size: 150%; \r\n color: red; \r\n padding-left: 15px;\r\n }\r\np,ul,li,td {\r\n color: black; \r\n }\r\na:link {\r\n color: green;\r\n text-decoration: underline;\r\n }\r\na:visited {\r\n color: gray;\r\n }\r\na:hover {\r\n color: red;\r\n text-decoration: none;\r\n}\r\na:active, a:focus {\r\n color: red;\r\n}', '2018-01-30 14:19:47'),
+(155, 43, 6, '<script>\r\nalert("test)\r\n</script>\r\n<html>\r\n <head>\r\n  <title>Test PHP</title>\r\n </head>\r\n <body>\r\n <?php echo \'<p>Bonjour le monde</p>\'; ?>\r\n </body>\r\n</html>', '2018-01-30 14:27:16'),
+(161, 42, 6, '&lt;li class=\'sidebar_service_space\'&gt;&amp;nbsp;&lt;/li&gt;\r\n            &lt;li class=\'sidebar_service_title\'&gt;About Malware&lt;/li&gt;\r\n            &lt;li&gt;&lt;a href=\'&lt;?php echo \'$home\' ?&gt;/services/malware/what-is-malware.html\'&gt;What is Malware?&lt;/a&gt;&lt;/li&gt;\r\n            &lt;li&gt;&lt;a href=\'&lt;?php echo \'$home\' ?&gt;/services/malware/common-signs.html\'&gt;Common Signs of Malware&lt;/a&gt;&lt;/li&gt;\r\n            &lt;li class=\'sidebar_service_space\'&gt;&amp;nbsp;&lt;/li&gt;\r\n', '2018-01-30 14:47:48'),
+(162, 42, 6, 'document.getElementById(&quot;demo&quot;).style.fontSize = &quot;25px&quot;;\r\ndocument.getElementById(&quot;demo&quot;).style.color = &quot;red&quot;;\r\ndocument.getElementById(&quot;demo&quot;).style.backgroundColor = &quot;yellow&quot;; ', '2018-01-30 14:50:51'),
+(163, 42, 6, '&lt;script&gt;\r\n\r\nalert (&quot;ERREUR&quot;);\r\n&lt;/script&gt;', '2018-01-30 14:51:40');
 
 -- --------------------------------------------------------
 
@@ -205,16 +216,18 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`id`, `id_user`, `title`, `id_cat`, `close`) VALUES
-(21, 4, 'ProblÃ¨me en C++ j\'ai besoin d\'aide !', 1, 0),
-(22, 4, 'Cherche du monde pour un zombie COD 3 !', 4, 0),
-(23, 4, 'DÃ©tecteur de fumÃ©e pas cher !', 11, 0),
-(24, 4, 'Cherche les coordonnÃ©es d\'un bon electricien Ã  Perpignan !', 10, 0),
-(25, 7, 'Recette de nouilles sautÃ©es sauce aigre douce tÃ© tÃ© bon ^^', 12, 0),
-(26, 7, 'Question sur le remake de StartCraft premier du nom', 4, 0),
-(27, 7, 'Cherche de la documentation sur PHP !', 2, 0),
-(29, 6, 'Windows Server 2012', 7, 0),
-(38, 6, 'test', 2, 0),
-(39, 5, 'kkllkk', 1, 0);
+(42, 6, 'lorem ipsum', 6, 0),
+(43, 6, 'PHP', 2, 0),
+(44, 6, 'VROUM !', 3, 0),
+(46, 6, '125 CBR moto cassÃ© !', 3, 0),
+(47, 4, 'Lapierre titane 96 help !', 17, 0),
+(48, 5, 'Test du javascript', 18, 0),
+(49, 5, 'Stromae', 14, 0),
+(50, 7, 'STAR WARS 8', 13, 0),
+(51, 6, 'WINDOWS', 7, 1),
+(52, 7, 'Leroy Merlin', 11, 0),
+(53, 7, 'Pause dÃ©jeuner', 12, 1),
+(54, 5, 'Envie de causer', 19, 0);
 
 -- --------------------------------------------------------
 
@@ -267,7 +280,8 @@ ALTER TABLE `link_role_grant`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`,`id_subject`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `post_content` (`post_content`);
 
 --
 -- Index pour la table `roles`
@@ -281,14 +295,16 @@ ALTER TABLE `roles`
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`id`,`id_user`),
   ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_cat` (`id_cat`);
+  ADD KEY `id_cat` (`id_cat`),
+  ADD KEY `title` (`title`);
 
 --
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_role` (`id_role`);
+  ADD KEY `id_role` (`id_role`),
+  ADD KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -298,7 +314,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT pour la table `grants`
 --
@@ -308,7 +324,7 @@ ALTER TABLE `grants`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
@@ -318,7 +334,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
